@@ -10,14 +10,14 @@ class CardDisplayTest {
   void displayTenAsString() {
     Card card = new Card(Suit.HEARTS, Rank.TEN);
 
-    Approvals.verify(card.display());
+    Approvals.verify(ConsoleCard.display(card));
   }
 
   @Test
   void displayNonTenAsString() {
     Card card = new Card(Suit.CLUBS, Rank.SEVEN);
 
-    Approvals.verify(card.display());
+    Approvals.verify(ConsoleCard.display(card));
   }
 
   @Test
@@ -26,6 +26,6 @@ class CardDisplayTest {
   }
 
   private String displayCard(Suit suit, Rank rank) {
-    return new Card(suit, rank).display();
+    return ConsoleCard.display(new Card(suit, rank));
   }
 }
