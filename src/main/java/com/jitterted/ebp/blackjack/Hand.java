@@ -19,7 +19,7 @@ public class Hand {
     int handValue = cards.stream().mapToInt(Card::rankValue).sum();
 
     // does the hand contain at least 1 Ace?
-    boolean hasAce = cards.stream().anyMatch(card -> card.rankValue() == 1);
+    boolean hasAce = cards.stream().anyMatch(card -> card.rank() == Rank.ACE);
 
     // if the total hand value <= 11, then count the Ace as 11 by adding 10
     if (hasAce && handValue <= 11) {
