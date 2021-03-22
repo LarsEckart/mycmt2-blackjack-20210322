@@ -1,10 +1,10 @@
 package com.jitterted.ebp.blackjack;
 
+import static org.fusesource.jansi.Ansi.ansi;
+
 import org.fusesource.jansi.Ansi;
 
 import java.util.Scanner;
-
-import static org.fusesource.jansi.Ansi.ansi;
 
 public class Game {
 
@@ -30,13 +30,17 @@ public class Game {
   }
 
   private static void displayWelcomeScreen() {
-    System.out.println(ansi()
-                           .bgBright(Ansi.Color.WHITE)
-                           .eraseScreen()
-                           .cursor(1, 1)
-                           .fgGreen().a("Welcome to")
-                           .fgRed().a(" Jitterted's")
-                           .fgBlack().a(" BlackJack"));
+    System.out.println(
+        ansi()
+            .bgBright(Ansi.Color.WHITE)
+            .eraseScreen()
+            .cursor(1, 1)
+            .fgGreen()
+            .a("Welcome to")
+            .fgRed()
+            .a(" Jitterted's")
+            .fgBlack()
+            .a(" BlackJack"));
   }
 
   public Game() {
@@ -132,12 +136,24 @@ public class Game {
         ansi()
             .cursorUp(7)
             .cursorRight(12)
-            .a("┌─────────┐").cursorDown(1).cursorLeft(11)
-            .a("│░░░░░░░░░│").cursorDown(1).cursorLeft(11)
-            .a("│░ J I T ░│").cursorDown(1).cursorLeft(11)
-            .a("│░ T E R ░│").cursorDown(1).cursorLeft(11)
-            .a("│░ T E D ░│").cursorDown(1).cursorLeft(11)
-            .a("│░░░░░░░░░│").cursorDown(1).cursorLeft(11)
+            .a("┌─────────┐")
+            .cursorDown(1)
+            .cursorLeft(11)
+            .a("│░░░░░░░░░│")
+            .cursorDown(1)
+            .cursorLeft(11)
+            .a("│░ J I T ░│")
+            .cursorDown(1)
+            .cursorLeft(11)
+            .a("│░ T E R ░│")
+            .cursorDown(1)
+            .cursorLeft(11)
+            .a("│░ T E D ░│")
+            .cursorDown(1)
+            .cursorLeft(11)
+            .a("│░░░░░░░░░│")
+            .cursorDown(1)
+            .cursorLeft(11)
             .a("└─────────┘"));
   }
 
@@ -152,5 +168,4 @@ public class Game {
     playerHand.display();
     System.out.println(" (" + playerHand.displayValue() + ")");
   }
-
 }
