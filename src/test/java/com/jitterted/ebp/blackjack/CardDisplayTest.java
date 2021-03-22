@@ -11,4 +11,11 @@ class CardDisplayTest {
 
     Approvals.verify(card.display());
   }
+
+  @Test
+  void displayNonTenAsString() {
+    Card card = new Card(Suit.CLUBS, Rank.SEVEN);
+
+    Approvals.verify(card.display());
+  }
 }
