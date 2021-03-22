@@ -12,4 +12,12 @@ public class HandDisplayTest {
 
     Approvals.verify(ConsoleHand.displayFirstCard(hand));
   }
+
+  @Test
+  public void displayTwoCard() throws Exception {
+    Hand hand =
+        new Hand(List.of(new Card(Suit.HEARTS, Rank.ACE), new Card(Suit.SPADES, Rank.THREE)));
+
+    Approvals.verify(ConsoleHand.cardsAsString(hand.cards()));
+  }
 }
