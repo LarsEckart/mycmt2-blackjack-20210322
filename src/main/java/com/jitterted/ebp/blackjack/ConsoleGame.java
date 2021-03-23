@@ -1,5 +1,7 @@
 package com.jitterted.ebp.blackjack;
 
+import static org.fusesource.jansi.Ansi.ansi;
+
 public class ConsoleGame {
 
   private final Game game;
@@ -12,6 +14,10 @@ public class ConsoleGame {
     Game game = new Game();
     ConsoleGame consoleGame = new ConsoleGame(game); // in general: Entities aren't directly passed in to Adapters
     consoleGame.start();
+  }
+
+  static void resetScreen() {
+    System.out.println(ansi().reset());
   }
 
   public void start() {
@@ -27,7 +33,7 @@ public class ConsoleGame {
 
     game.determineOutcome();
 
-    Game.resetScreen();
+    resetScreen();
   }
 
   public void playerPlays() {
