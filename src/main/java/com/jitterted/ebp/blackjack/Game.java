@@ -52,26 +52,6 @@ public class Game {
     }
   }
 
-  private void playerTurn() {
-    // get Player's decision: hit until they stand, then they're done (or they go bust)
-
-    while (!playerHand.isBusted()) {
-      displayGameState();
-      String playerChoice = inputFromPlayer().toLowerCase();
-      if (playerChoice.startsWith("s")) {
-        break;
-      }
-      if (playerChoice.startsWith("h")) {
-        playerHand.drawFrom(deck);
-        if (playerHand.isBusted()) {
-          return;
-        }
-      } else {
-        System.out.println("You need to [H]it or [S]tand");
-      }
-    }
-  }
-
   public String inputFromPlayer() {
     System.out.println("[H]it or [S]tand?");
     Scanner scanner = new Scanner(System.in);
