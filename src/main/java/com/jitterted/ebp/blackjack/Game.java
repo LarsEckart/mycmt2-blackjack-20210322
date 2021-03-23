@@ -13,16 +13,6 @@ public class Game {
   private final Hand dealerHand = new Hand();
   private final Hand playerHand = new Hand();
   private boolean playerDone;
-  
-  static void displayWelcomeScreen() {
-    System.out.println(ansi()
-                           .bgBright(Ansi.Color.WHITE)
-                           .eraseScreen()
-                           .cursor(1, 1)
-                           .fgGreen().a("Welcome to")
-                           .fgRed().a(" Jitterted's")
-                           .fgBlack().a(" BlackJack"));
-  }
 
   public Game() {
     deck = new Deck();

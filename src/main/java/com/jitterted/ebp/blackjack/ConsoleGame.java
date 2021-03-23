@@ -2,6 +2,8 @@ package com.jitterted.ebp.blackjack;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
+import org.fusesource.jansi.Ansi;
+
 public class ConsoleGame {
 
   private final Game game;
@@ -20,8 +22,18 @@ public class ConsoleGame {
     System.out.println(ansi().reset());
   }
 
+  static void displayWelcomeScreen() {
+    System.out.println(ansi()
+                           .bgBright(Ansi.Color.WHITE)
+                           .eraseScreen()
+                           .cursor(1, 1)
+                           .fgGreen().a("Welcome to")
+                           .fgRed().a(" Jitterted's")
+                           .fgBlack().a(" BlackJack"));
+  }
+
   public void start() {
-    Game.displayWelcomeScreen();
+    displayWelcomeScreen();
 
     game.initialDeal();
 
