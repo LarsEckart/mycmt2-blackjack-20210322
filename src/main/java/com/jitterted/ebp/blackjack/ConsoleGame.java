@@ -46,6 +46,18 @@ public class ConsoleGame {
             .a("└─────────┘"));
   }
 
+  public void displayFinalGameState() {
+    System.out.print(ansi().eraseScreen().cursor(1, 1));
+    System.out.println("Dealer has: ");
+    System.out.println(ConsoleHand.cardsAsString(game.dealerHand()));
+    System.out.println(" (" + game.dealerHand().value() + ")");
+
+    System.out.println();
+    System.out.println("Player has: ");
+    System.out.println(ConsoleHand.cardsAsString(game.playerHand()));
+    System.out.println(" (" + game.playerHand().value() + ")");
+  }
+
   public void start() {
     displayWelcomeScreen();
 
@@ -55,7 +67,7 @@ public class ConsoleGame {
 
     game.dealerTurn();
 
-    game.displayFinalGameState();
+    displayFinalGameState();
 
     game.determineOutcome();
 
