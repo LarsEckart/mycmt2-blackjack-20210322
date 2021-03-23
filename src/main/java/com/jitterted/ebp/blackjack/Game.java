@@ -1,7 +1,5 @@
 package com.jitterted.ebp.blackjack;
 
-import static org.fusesource.jansi.Ansi.ansi;
-
 public class Game {
 
   private final Deck deck;
@@ -23,20 +21,6 @@ public class Game {
     // why: players first because this is the rule
     playerHand.drawFrom(deck);
     dealerHand.drawFrom(deck);
-  }
-
-  public void determineOutcome() {
-    if (playerHand.isBusted()) {
-      System.out.println("You Busted, so you lose.  💸");
-    } else if (dealerHand.isBusted()) {
-      System.out.println("Dealer went BUST, Player wins! Yay for you!! 💵");
-    } else if (playerHand.beats(dealerHand)) {
-      System.out.println("You beat the Dealer! 💵");
-    } else if (playerHand.pushes(dealerHand)) {
-      System.out.println("Push: The house wins, you Lose. 💸");
-    } else {
-      System.out.println("You lost to the Dealer. 💸");
-    }
   }
 
   public void dealerTurn() {
