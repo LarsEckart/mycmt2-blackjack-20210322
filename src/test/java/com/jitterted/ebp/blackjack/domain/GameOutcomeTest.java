@@ -17,6 +17,9 @@ public class GameOutcomeTest {
     Game game = new Game(stubDeck);
     game.initialDeal();
 
+    game.playerStands();
+    game.dealerTurn();
+
     String outcome = game.determineOutcome();
 
     assertThat(outcome)
@@ -34,7 +37,9 @@ public class GameOutcomeTest {
     );
     Game game = new Game(stubDeck);
     game.initialDeal();
+
     game.playerHits();
+    game.dealerTurn();
 
     String outcome = game.determineOutcome();
 
