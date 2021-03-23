@@ -48,20 +48,6 @@ public class Game {
     }
   }
 
-  public static void displayGameState(Game game) {
-    System.out.print(ansi().eraseScreen().cursor(1, 1));
-    System.out.println("Dealer has: ");
-    System.out.println(ConsoleHand.displayFirstCard(game.dealerHand())); // first card is Face Up
-
-    // second card is the hole card, which is hidden
-    ConsoleGame.displayBackOfCard();
-
-    System.out.println();
-    System.out.println("Player has: ");
-    System.out.println(ConsoleHand.cardsAsString(game.playerHand()));
-    System.out.println(" (" + game.playerHand().value() + ")");
-  }
-
   public Hand playerHand() {
     return playerHand;
   }

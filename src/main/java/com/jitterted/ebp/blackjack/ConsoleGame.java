@@ -48,6 +48,20 @@ public class ConsoleGame {
             .a("└─────────┘"));
   }
 
+  public void displayGameState() {
+    System.out.print(ansi().eraseScreen().cursor(1, 1));
+    System.out.println("Dealer has: ");
+    System.out.println(ConsoleHand.displayFirstCard(game.dealerHand())); // first card is Face Up
+
+    // second card is the hole card, which is hidden
+    displayBackOfCard();
+
+    System.out.println();
+    System.out.println("Player has: ");
+    System.out.println(ConsoleHand.cardsAsString(game.playerHand()));
+    System.out.println(" (" + game.playerHand().value() + ")");
+  }
+
   public String inputFromPlayer() {
     System.out.println("[H]it or [S]tand?");
     Scanner scanner = new Scanner(System.in);
@@ -84,7 +98,7 @@ public class ConsoleGame {
 
   public void playerPlays() {
     while (!game.isPlayerDone()) {
-      Game.displayGameState(game);
+      displayGameState();
       String command = inputFromPlayer();
       handle(command);
     }
