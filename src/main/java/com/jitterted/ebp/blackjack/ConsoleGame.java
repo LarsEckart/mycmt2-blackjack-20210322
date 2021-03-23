@@ -4,6 +4,8 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 import org.fusesource.jansi.Ansi;
 
+import java.util.Scanner;
+
 public class ConsoleGame {
 
   private final Game game;
@@ -46,6 +48,12 @@ public class ConsoleGame {
             .a("└─────────┘"));
   }
 
+  public String inputFromPlayer() {
+    System.out.println("[H]it or [S]tand?");
+    Scanner scanner = new Scanner(System.in);
+    return scanner.nextLine();
+  }
+
   public void displayFinalGameState() {
     System.out.print(ansi().eraseScreen().cursor(1, 1));
     System.out.println("Dealer has: ");
@@ -77,7 +85,7 @@ public class ConsoleGame {
   public void playerPlays() {
     while (!game.isPlayerDone()) {
       game.displayGameState();
-      String command = game.inputFromPlayer();
+      String command = inputFromPlayer();
       handle(command);
     }
   }
