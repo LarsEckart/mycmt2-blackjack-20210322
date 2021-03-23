@@ -49,20 +49,6 @@ public class ConsoleGame {
             .a("└─────────┘"));
   }
 
-  public void determineOutcome() {
-    if (game.playerHand().isBusted()) {
-      System.out.println("You Busted, so you lose.  💸");
-    } else if (game.dealerHand().isBusted()) {
-      System.out.println("Dealer went BUST, Player wins! Yay for you!! 💵");
-    } else if (game.playerHand().beats(game.dealerHand())) {
-      System.out.println("You beat the Dealer! 💵");
-    } else if (game.playerHand().pushes(game.dealerHand())) {
-      System.out.println("Push: The house wins, you Lose. 💸");
-    } else {
-      System.out.println("You lost to the Dealer. 💸");
-    }
-  }
-
   public void displayGameState() {
     System.out.print(ansi().eraseScreen().cursor(1, 1));
     System.out.println("Dealer has: ");
@@ -100,7 +86,7 @@ public class ConsoleGame {
 
     displayFinalGameState();
 
-    determineOutcome();
+    game.determineOutcome();
 
     resetScreen();
   }
