@@ -76,12 +76,6 @@ public class ConsoleGame {
     System.out.println(" (" + game.playerHand().value() + ")");
   }
 
-  public String inputFromPlayer() {
-    System.out.println("[H]it or [S]tand?");
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextLine();
-  }
-
   public void displayFinalGameState() {
     System.out.print(ansi().eraseScreen().cursor(1, 1));
     System.out.println("Dealer has: ");
@@ -116,6 +110,12 @@ public class ConsoleGame {
       String command = inputFromPlayer();
       handle(command);
     }
+  }
+
+  public String inputFromPlayer() {
+    System.out.println("[H]it or [S]tand?");
+    Scanner scanner = new Scanner(System.in);
+    return scanner.nextLine();
   }
 
   public void handle(String command) {
