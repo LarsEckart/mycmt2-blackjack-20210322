@@ -73,13 +73,21 @@ public class Game {
   public void displayFinalGameState() {
     System.out.print(ansi().eraseScreen().cursor(1, 1));
     System.out.println("Dealer has: ");
-    System.out.println(ConsoleHand.cardsAsString(dealerHand));
-    System.out.println(" (" + dealerHand.value() + ")");
+    System.out.println(ConsoleHand.cardsAsString(dealerHand()));
+    System.out.println(" (" + dealerHand().value() + ")");
 
     System.out.println();
     System.out.println("Player has: ");
-    System.out.println(ConsoleHand.cardsAsString(playerHand));
-    System.out.println(" (" + playerHand.value() + ")");
+    System.out.println(ConsoleHand.cardsAsString(playerHand()));
+    System.out.println(" (" + playerHand().value() + ")");
+  }
+
+  public Hand playerHand() {
+    return playerHand;
+  }
+
+  public Hand dealerHand() {
+    return dealerHand;
   }
 
   public void playerHits() {
