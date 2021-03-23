@@ -13,13 +13,7 @@ public class Game {
   private final Hand dealerHand = new Hand();
   private final Hand playerHand = new Hand();
   private boolean playerDone;
-
-  private static void playGame() {
-    Game game = new Game();
-    game.initialDeal();
-    game.play();
-  }
-
+  
   static void displayWelcomeScreen() {
     System.out.println(ansi()
                            .bgBright(Ansi.Color.WHITE)
