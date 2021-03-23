@@ -1,7 +1,8 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.adapter.in.console;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
+import com.jitterted.ebp.blackjack.domain.Game;
 import org.fusesource.jansi.Ansi;
 
 import java.util.Scanner;
