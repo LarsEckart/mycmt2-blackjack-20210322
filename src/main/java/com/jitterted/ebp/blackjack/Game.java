@@ -14,12 +14,6 @@ public class Game {
   private final Hand playerHand = new Hand();
   private boolean playerDone;
 
-  public static void main(String[] args) {
-    displayWelcomeScreen();
-    playGame();
-    resetScreen();
-  }
-
   static void resetScreen() {
     System.out.println(ansi().reset());
   }
