@@ -84,7 +84,7 @@ public class ConsoleGame {
 
   public void playerPlays() {
     while (!game.isPlayerDone()) {
-      game.displayGameState();
+      Game.displayGameState(game);
       String command = inputFromPlayer();
       handle(command);
     }

@@ -1,7 +1,5 @@
 package com.jitterted.ebp.blackjack;
 
-import java.util.Scanner;
-
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class Game {
@@ -50,18 +48,18 @@ public class Game {
     }
   }
 
-  public void displayGameState() {
+  public static void displayGameState(Game game) {
     System.out.print(ansi().eraseScreen().cursor(1, 1));
     System.out.println("Dealer has: ");
-    System.out.println(ConsoleHand.displayFirstCard(dealerHand)); // first card is Face Up
+    System.out.println(ConsoleHand.displayFirstCard(game.dealerHand())); // first card is Face Up
 
     // second card is the hole card, which is hidden
     ConsoleGame.displayBackOfCard();
 
     System.out.println();
     System.out.println("Player has: ");
-    System.out.println(ConsoleHand.cardsAsString(playerHand));
-    System.out.println(" (" + playerHand.value() + ")");
+    System.out.println(ConsoleHand.cardsAsString(game.playerHand()));
+    System.out.println(" (" + game.playerHand().value() + ")");
   }
 
   public Hand playerHand() {
