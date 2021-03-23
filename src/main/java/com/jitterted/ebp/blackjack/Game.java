@@ -23,16 +23,6 @@ public class Game {
     dealRoundOfCards();
   }
 
-  public void play() {
-    playerTurn();
-
-    dealerTurn();
-
-    displayFinalGameState();
-
-    determineOutcome();
-  }
-
   private void dealRoundOfCards() {
     // why: players first because this is the rule
     playerHand.drawFrom(deck);
