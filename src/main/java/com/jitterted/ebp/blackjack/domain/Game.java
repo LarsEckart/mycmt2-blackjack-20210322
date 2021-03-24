@@ -1,7 +1,5 @@
 package com.jitterted.ebp.blackjack.domain;
 
-import static org.fusesource.jansi.Ansi.ansi;
-
 public class Game {
 
   private final Deck deck;
@@ -29,17 +27,17 @@ public class Game {
     dealerHand.drawFrom(deck);
   }
 
-  public String determineOutcome() {
+  public GameOutcome determineOutcome() {
     if (playerHand.isBusted()) {
-      return "You Busted, so you lose.  💸";
+      return GameOutcome.YOU_BUSTED_SO_YOU_LOSE;
     } else if (dealerHand.isBusted()) {
-      return "Dealer went BUST, Player wins! Yay for you!! 💵";
+      return GameOutcome.DEALER_WENT_BUST_PLAYER_WINS_YAY_FOR_YOU;
     } else if (playerHand.beats(dealerHand)) {
-      return "You beat the Dealer! 💵";
+      return GameOutcome.YOU_BEAT_THE_DEALER;
     } else if (playerHand.pushes(dealerHand)) {
-      return "Push: The house wins, you Lose. 💸";
+      return GameOutcome.PUSH_THE_HOUSE_WINS_YOU_LOSE;
     } else {
-      return "You lost to the Dealer. 💸";
+      return GameOutcome.YOU_LOST_TO_THE_DEALER;
     }
   }
 

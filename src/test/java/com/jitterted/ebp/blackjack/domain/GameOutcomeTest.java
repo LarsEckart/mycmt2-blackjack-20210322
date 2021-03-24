@@ -20,9 +20,9 @@ public class GameOutcomeTest {
     game.playerStands();
     game.dealerTurn();
 
-    String outcome = game.determineOutcome();
+    GameOutcome outcome = game.determineOutcome();
 
-    assertThat(outcome)
+    assertThat(outcome.getValue())
         .isEqualTo("You beat the Dealer! 💵");
   }
 
@@ -41,9 +41,9 @@ public class GameOutcomeTest {
     game.playerHits();
     game.dealerTurn();
 
-    String outcome = game.determineOutcome();
+    GameOutcome outcome = game.determineOutcome();
 
-    assertThat(outcome)
+    assertThat(outcome.getValue())
         .isEqualTo("You Busted, so you lose.  💸");
   }
 
