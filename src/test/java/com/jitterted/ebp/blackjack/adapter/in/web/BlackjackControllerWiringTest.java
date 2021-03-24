@@ -69,6 +69,34 @@ class BlackjackControllerWiringTest {
   }
 
   @Test
+  public void stand() throws Exception {
+    Deck deck = StubDeck.createPlayerStandDoesNotBustDeck();
+    GameService gameService = new GameService(deck);
+    BlackjackController blackjackController = new BlackjackController(gameService);
+    blackjackController.startGame();
+
+    String redirect = blackjackController.standCommand();
+
+    assertThat(redirect)
+        .isEqualTo("redirect:/done");
+  }
+
+  @Test
+  public void standCommandDealsAnotherCardToDealerWhenPlayerNotBustedAndDealerBelow16() throws Exception {
+    GameService gameService = new GameService(StubDeck.createPlayerStandDoesNotBustDeck());
+    BlackjackController blackjackController = new BlackjackController(gameService);
+    blackjackController.startGame();
+
+    String redirect = blackjackController.standCommand();
+
+    assertThat(redirect)
+        .isEqualTo("redirect:/done");
+
+    assertThat(gameService.currentGame().dealerHand().cards())
+        .hasSize(3);
+  }
+
+  @Test
   public void donePageShowsFinalGameViewWithOutcome() throws Exception {
     GameService gameService = new GameService();
     BlackjackController blackjackController = new BlackjackController(gameService);

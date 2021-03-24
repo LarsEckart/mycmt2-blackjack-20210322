@@ -50,6 +50,12 @@ public class WebConfigurationTest {
   }
 
   @Test
+  public void postToStandEndpointIs3xxRedirect() throws Exception {
+    mockMvc.perform(post("/stand"))
+           .andExpect(status().is3xxRedirection());
+  }
+
+  @Test
   public void getOfDoneEndpointIs200Ok() throws Exception {
     mockMvc.perform(get("/done"))
            .andExpect(status().isOk());
