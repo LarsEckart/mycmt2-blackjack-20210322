@@ -1,8 +1,11 @@
 package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.domain.port.GameMonitor;
+
 public class Game {
 
   private final Deck deck;
+  private GameMonitor gameMonitor;
 
   private final Hand dealerHand = new Hand();
   private final Hand playerHand = new Hand();
@@ -13,7 +16,12 @@ public class Game {
   }
 
   public Game(Deck deck) {
+    this(deck, (game) -> {});
+  }
+
+  public Game(Deck deck, GameMonitor gameMonitor) {
     this.deck = deck;
+    this.gameMonitor = gameMonitor;
   }
 
   public void initialDeal() {
@@ -25,6 +33,29 @@ public class Game {
     // why: players first because this is the rule
     playerHand.drawFrom(deck);
     dealerHand.drawFrom(deck);
+  }
+
+  public void playerHits() {
+    playerHand.drawFrom(deck);
+    playerDone = playerHand.isBusted();
+    if (playerDone) {
+      gameMonitor.roundCompleted(this);
+    }
+  }
+
+  public void playerStands() {
+    dealerTurn();
+    playerDone = true;
+    gameMonitor.roundCompleted(this);
+  }
+
+  private void dealerTurn() {
+    // Dealer makes its choice automatically based on a simple heuristic (<=16, hit, 17>stand)
+    if (!playerHand.isBusted()) {
+      while (dealerHand.dealerMustDrawCard()) {
+        dealerHand.drawFrom(deck);
+      }
+    }
   }
 
   public GameOutcome determineOutcome() {
@@ -41,31 +72,12 @@ public class Game {
     }
   }
 
-  private void dealerTurn() {
-    // Dealer makes its choice automatically based on a simple heuristic (<=16, hit, 17>stand)
-    if (!playerHand.isBusted()) {
-      while (dealerHand.dealerMustDrawCard()) {
-        dealerHand.drawFrom(deck);
-      }
-    }
-  }
-
   public Hand dealerHand() {
     return dealerHand;
   }
 
   public Hand playerHand() {
     return playerHand;
-  }
-
-  public void playerHits() {
-    playerHand.drawFrom(deck);
-    playerDone = playerHand.isBusted();
-  }
-
-  public void playerStands() {
-    dealerTurn();
-    playerDone = true;
   }
 
   public boolean isPlayerDone() {

@@ -1,19 +1,28 @@
 package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.domain.port.GameMonitor;
+
 public class GameService {
   private final Deck deck;
+  private final GameMonitor gameMonitor;
   private Game currentGame;
 
   public GameService() {
-    this.deck = new Deck();
+    this(new Deck());
   }
 
   public GameService(Deck deck) {
     this.deck = deck;
+    this.gameMonitor = g -> {};
+  }
+
+  public GameService(GameMonitor gameMonitor) {
+    this.gameMonitor = gameMonitor;
+    this.deck = new Deck();
   }
 
   public void createGame() {
-    currentGame = new Game(deck);
+    currentGame = new Game(deck, gameMonitor);
   }
 
   public Game currentGame() {

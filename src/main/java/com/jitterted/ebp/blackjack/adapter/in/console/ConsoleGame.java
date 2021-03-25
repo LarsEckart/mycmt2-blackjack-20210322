@@ -1,5 +1,6 @@
 package com.jitterted.ebp.blackjack.adapter.in.console;
 
+import com.jitterted.ebp.blackjack.adapter.out.HttpGameMonitor;
 import com.jitterted.ebp.blackjack.domain.Game;
 import com.jitterted.ebp.blackjack.domain.GameService;
 import org.fusesource.jansi.Ansi;
